@@ -1,12 +1,15 @@
-import React, {  lazy } from "react";
-const Person = lazy(() => import("person/Person")); 
+import React, { lazy } from "react";
+import './App.scss';
+
+
+const Person = lazy(() => import("person/Person"));
 
 const App: React.FC = () => {
-  return ( 
+  return (
     <div>
-          <Person />
-        </div>        
+      <Person />     
+    </div>
   );
-};
+}
 
 export default App;
