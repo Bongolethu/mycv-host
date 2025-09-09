@@ -1,0 +1,65 @@
+// Define variables for customization
+$gutter: 20px;
+$columns: 12;
+
+// Mixin for grid container
+@mixin grid-container {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden; // Clear floats 
+}
+
+// Mixin for grid item
+@mixin grid-item($span) {
+  float: left;
+  width: calc((100% / $columns) * $span - #{$gutter});
+  margin-right: $gutter;
+
+  &:last-child {
+    margin-right: 0; // Remove gutter for the last item
+  }
+}
+
+// Usage
+.gridMain {
+  @include grid-container;
+
+  .gridLeft {
+    @include grid-item(1); // Example: 4-column width
+    
+    // background-color: aqua;
+  }
+
+  .gridRight {
+    @include grid-item(10); // Example: 4-column width
+    background-color: blueviolet; 
+}
+
+@media screen and (max-width: 700px) { 
+ .gridLeft {
+    @include grid-item(12); // Example: 4-column width
+    // background-color: aqua; 
+  }
+  .gridRight {
+    @include grid-item(12); // Example: 4-column width
+    background-color: blueviolet;
+    min-width: 800px;
+    padding: 20px;
+  }
+}
+
+// @media screen and (max-width: 300px) {
+//   .gridLeft {
+   
+//     @include grid-item(12); // Example: 4-column width
+//     background-color: aqua;
+//      min-width: 800px;
+//   }
+//    .gridRight {
+//     @include grid-item(12); // Example: 4-column width
+//     background-color: blueviolet;
+//     min-width: 600px;
+//     padding: 20px;
+//   }  
+}
